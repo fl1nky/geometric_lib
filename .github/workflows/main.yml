@@ -1,0 +1,24 @@
+name: Unit tests
+
+on: push
+
+permissions:
+  contents: read
+
+jobs:
+  unit-tests:
+    name: Unit tests on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v6
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Run the Lab 4 unit tests
+        run: python -m unittest -v test_figures
