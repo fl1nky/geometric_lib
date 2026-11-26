@@ -21,4 +21,4 @@ def perimeter(a, b):
     perimeter(4, 3)
     14
     """
-    return (a + b)
+    return (a + b)*2
